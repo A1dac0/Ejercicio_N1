@@ -1,1 +1,1 @@
-# Ejercicio_N1
+Juego Computacion Grafica
