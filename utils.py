@@ -1,6 +1,6 @@
 # pip install PyOpenGL
 # pip install pygame
-# pip install pygame==2.0.0.dev6 (for python 3.8.x)
+# pip install pygame==2.0.0.dev6 (for python 3.8.x)	pip uninstall
 # pip install numpy
 # Python 3.8
 
@@ -14,7 +14,91 @@ from pygame.locals import *
 import math
 import random as rdn
 import numpy as np
+def set_pixel(x, y, r, g, b, size):
+	glColor3f(r, g, b)
+	glPointSize(size)
 
+	glBegin(GL_POINTS)
+	glVertex2f(x, y)
+	glEnd()
+
+	# print("{}\t{}".format(x, y))
+	pygame.time.wait(100)
+
+	# option 1 (ok)
+	#pygame.display.flip()
+
+	# option 2
+	#glFlush()
+
+def color_pixel(width, height, x, y, size):
+	rgb = glReadPixels(width / 2 + x , height / 2 + y, size ,size ,
+						GL_RGB, GL_UNSIGNED_BYTE, None)
+	return list(rgb)
+
+def clearCanvas(r,g,b):
+	glClearColor(r,g,b, 1.0)
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+def Traslate(vertices, tx, ty):
+	T = [
+		[1, 0, tx],
+		[0, 1, ty],
+		[0, 0, 1]
+	]
+	result = []
+	for item in vertices:
+		point = np.dot(T, item)
+		result.append(point)
+	return result
+
+def Defender(x, y, r, g, b, size):
+	matrix = [
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+		[0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1],
+		[1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
+	]
+
+	for i in range(len(matrix)):
+		for j in range(len(matrix[0])):
+			if matrix[i][j] == 1:
+				set_pixel(y - j, x - i, r, g, b, size)
+
+def MoveDefender(x, y, sx, sy, r, g, b, size):
+	clearCanvas()
+	vertices = Traslate([[x, y, 1]], sx, sy)
+	x = vertices[0][0]
+	y = vertices[0][1]
+	Defender(y, -x, r, g, 1, size)
+	pygame.display.flip()
+	return x, y
+
+### Draw
+def display_openGL(width, height, scale):
+	pygame.display.set_mode((width, height), pygame.OPENGL)
+
+	glClearColor(37, 72, 113, 1.0)
+	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+	# glScalef(scale, scale, 0)
+
+	gluOrtho2D(-1 * width / 2, width / 2, -1 * height / 2, height / 2)
 ### Algorithm ###
 
 def set_pixel(x, y, r, g, b, size):
@@ -24,13 +108,13 @@ def set_pixel(x, y, r, g, b, size):
 	glBegin(GL_POINTS)
 	glVertex2f(x, y)
 	glEnd()
-	
-	pygame.display.flip()
+
+	#pygame.display.flip()
 	# print("{}\t{}".format(x, y))
-	pygame.time.wait(100)
+	#pygame.time.wait(10)
 
 def color_pixel(width, height, x, y, size):
-	rgb = glReadPixels(width / 2 + x , height / 2 + y, size ,size , 
+	rgb = glReadPixels(width / 2 + x , height / 2 + y, size ,size ,
 						GL_RGB, GL_UNSIGNED_BYTE, None)
 	return list(rgb)
 
@@ -82,7 +166,7 @@ def Bressennham(x0, y0, x1, y1, r, g, b, size):
 		x = x0
 		y = y0
 
-	set_pixel(x, y, 1, 0, 0, size)
+	set_pixel(x, y, r, g, b, size)
 	k = 0
 	# print(m, dx, dy)
 	while k < dx:
@@ -276,7 +360,7 @@ def DrawPolygon_(vertices, r, g, b, size):
 	# vertices = [(x1, x2), (x2, y2), ..., (xn, yn)]
 	vertices.append(vertices[0])
 	for k in range(len(vertices) - 1):
-		# print(vertices[k])
+		print(vertices[k])
 		x0, y0 = vertices[k][:2]
 		x1, y1 = vertices[k + 1][:2]
 		DDA(x0, y0, x1, y1, r, g, b, size)
@@ -288,12 +372,9 @@ def SimpleSeedFill(width, height, size, vertices, xi, yi, r, g, b):
 	stack.append((xi, yi))
 	while len(stack) > 0:
 		x, y = stack.pop()
-
 		if color_pixel(width, height, x, y, size) != [r, g, b]:
 			set_pixel(x, y, r, g, b, size)
-			print(x, y)
 
-		# examine surrounding pixels to see if they should be placed onto stack
 		if color_pixel(width, height, x + 1, y, size) != [r, g, b]:
 			stack.append((x + 1, y))
 
@@ -320,17 +401,17 @@ def SimpleSeedFill(width, height, size, vertices, xi, yi, r, g, b):
 
 def FillTriangle(vertices, r, g, b, size):
 	# vertices = [(x1, x2), (x2, y2), ..., (xn, yn)]
-	
+
 	x0, y0 = vertices[1]
 	x1, y1 = vertices[2]
 	points = DDA(x0, y0, x1, y1, r, g, b, size)
 	# print(points)
 
 	x0, y0 = vertices[0]
-	print(x0, y0)
+	#print(x0, y0)
 	for item in points:
 		x1, y1 = item
-		print(x1, y1)
+		#print(x1, y1)
 		DDA(x0, y0, x1, y1, r, g, b, size)
 		# break
 
@@ -360,8 +441,8 @@ def FillTriangle_(vertices, r, g, b, size):
 
 def Traslate(vertices, tx, ty):
 	T = [
-		[1, 0, tx], 
-		[0, 1, ty], 
+		[1, 0, tx],
+		[0, 1, ty],
 		[0, 0, 1]
 	]
 	result = []
@@ -380,6 +461,49 @@ def Rotation(vertices, angle):
 	result = []
 	for item in vertices:
 		point = np.dot(R, item)
+		result.append(point)
+	return result
+def Escalation(vertices,sx,sy):
+	R=[
+		[sx,0,0],
+		[0,sy,0],
+		[0,0,1]
+	]
+	result = []
+	for item in vertices:
+		point = np.dot(R,item)
+		result.append(point)
+	return result
+
+#Reflexion sobre eje X
+def ReflectionX(vertices):
+	R=[[1,0,0],
+		[0,-1,0],
+		[0,0,1]]
+	result = []
+	for item in vertices:
+		point  = np.dot(R,item)
+		result.append(point)
+	return result
+
+#Reflexion sobre eje Y
+def ReflectionY(vertices):
+	R=[[-1,0,0],
+		[0,1,0],
+		[0,0,1]]
+	result = []
+	for item in vertices:
+		point  = np.dot(R,item)
+		result.append(point)
+	return result
+
+def deformation(vertices,shx,shy):
+	R=[[1,shx,0],
+		[shy,1,0],
+		[0,0,1]]
+	result = []
+	for item in vertices:
+		point  = np.dot(R,item)
 		result.append(point)
 	return result
 
