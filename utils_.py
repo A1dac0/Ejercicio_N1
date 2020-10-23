@@ -30,7 +30,13 @@ def floodfill(matrix, x, y):
         if y < len(matrix) - 1:
             floodfill(matrix,x,y+1)
 
+def set_pixel2(x, y, r, g, b,alfa, size):
+	glColor4f(r, g, b,alfa)
+	glPointSize(size)
 
+	glBegin(GL_POINTS)
+	glVertex2f(x, y)
+	glEnd()
 def set_pixel(x, y, r, g, b, size):
 	glColor3f(r, g, b)
 	glPointSize(size)

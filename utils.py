@@ -266,7 +266,7 @@ def Circle4v(xc, yc, radio, r, g, b, size):
 def Circulo4(xc, yc, radio, r, g, b, size):
   raiz = math.sqrt(2)
   inicio = math.ceil(radio / raiz)
-    
+
   for x in range(-inicio, inicio): #-71,70
     y=math.ceil(math.sqrt(radio*radio-x*x))
     print(x, y)
@@ -463,7 +463,7 @@ def Rotation(vertices, angle):
 		point = np.dot(R, item)
 		result.append(point)
 	return result
-def Escalation(vertices,sx,sy):
+def Scaling(vertices,sx,sy):
 	R=[
 		[sx,0,0],
 		[0,sy,0],
@@ -497,7 +497,7 @@ def ReflectionY(vertices):
 		result.append(point)
 	return result
 
-def deformation(vertices,shx,shy):
+def Shear(vertices,shx,shy):
 	R=[[1,shx,0],
 		[shy,1,0],
 		[0,0,1]]
