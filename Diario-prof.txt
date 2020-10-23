@@ -1,0 +1,1 @@
+23-Oct. 3 personajes. space invaders. decidieron algo mas pequeño. bresenham, circulo8 vias, matriz punto a punto. Codigo comentado en español.  El readme no esta completo. Diario de proceso . No hay colaboración
