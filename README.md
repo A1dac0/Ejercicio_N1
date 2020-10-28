@@ -1,3 +1,7 @@
-COMPUTACION GRAFICA - UNSAAC:
+COMPUTACION GRAFICA - UNSAAC
+2020-I
 
-Juego basado inspirado en "Space Invaders".
+Juego inspirado en "Space Invaders".
+
+- OpenGl (pyOpenGl)
+- Pygame
