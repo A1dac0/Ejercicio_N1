@@ -206,7 +206,7 @@ def Bressennham_(x0, y0, x1, y1, r, g, b, size):
 		x = x0
 		y = y0
 
-	set_pixel(x, y, 1, 0, 0, size)
+	set_pixel(x, y, r, g, b, size)
 	k = 0
 	# print(m, dx, dy)
 	while k < dx:
