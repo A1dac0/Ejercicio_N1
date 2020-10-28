@@ -1,10 +1,7 @@
 COMPUTACION GRAFICA - UNSAAC
 2020-I
 
-Integrantes:
--Cusihuaman Auccacusi Luis Aldair
--
--
+
 Juego inspirado en "Space Invaders".
 
 - OpenGl (pyOpenGl)
