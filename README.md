@@ -7,8 +7,9 @@ Juego inspirado en "Space Invaders".
 - Pygame
 
 Idea Juego:
+
 Tu tienes el deber de protejer el planeta, tu nave esta equipado con proyectiles
-que destruiran los meteoritos que
+que destruiran los meteoritos.
 
 Como Jugar:
 1) Keys Left,Right,Up,Down: Mover el la nave
