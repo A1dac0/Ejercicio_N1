@@ -6,6 +6,8 @@ Integrantes:
 - Ventura Jauja Jaime
 - Yupanqui Carrillo Holger Alfredo
 
+Proceso de creacion: https://docs.google.com/presentation/d/1WEpJnUh0mL0TwO8ZcteqZ4A5gvXA1KNCd8k5NaCWS88/edit?usp=sharing
+
 Juego inspirado en "Space Invaders".
 
 - OpenGl (pyOpenGl)
