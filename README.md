@@ -1,6 +1,10 @@
 COMPUTACION GRAFICA - UNSAAC
 2020-I
 
+Integrante.
+- Cusihuaman Auccacusi Luis Aldair
+- Jaime Ventura Jauja
+- Yupanqui Carrillo Holger Alfredo
 
 Juego inspirado en "Space Invaders".
 
