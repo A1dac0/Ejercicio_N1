@@ -3,7 +3,7 @@ COMPUTACION GRAFICA - UNSAAC
 
 Integrante.
 - Cusihuaman Auccacusi Luis Aldair
-- Jaime Ventura Jauja
+- Ventura Jauja Jaime
 - Yupanqui Carrillo Holger Alfredo
 
 Juego inspirado en "Space Invaders".
