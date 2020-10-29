@@ -1,7 +1,7 @@
 COMPUTACION GRAFICA - UNSAAC
 2020-I
 
-Integrante.
+Integrantes:
 - Cusihuaman Auccacusi Luis Aldair
 - Ventura Jauja Jaime
 - Yupanqui Carrillo Holger Alfredo
