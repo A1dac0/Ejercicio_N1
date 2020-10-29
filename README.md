@@ -13,18 +13,18 @@ Juego inspirado en "Space Invaders".
 
 Idea Juego:
 
-Tu tienes el deber de protejer el planeta, tu nave esta equipado con proyectiles
-que destruiran los meteoritos.
+Tu tienes la mision de proteger el planeta, tu nave esta equipado con proyectiles
+que destruiran los meteoritos. No dejes que ningun meteorito impacte sobre el planeta...Suerte.
 
 
 Como Jugar:
-1) Keys Left,Right,Up,Down: Mover el la nave
-2) Key Space: Lanza proyectiles
+- Keys Left,Right,Up,Down: Mover la nave
+- Key Space: Lanzar proyectiles
 
 Mecanica:
-La nave tiene una barra de salud al igual que el plante por lo que debes lanza proyectiles 
+La nave tiene una barra de salud al igual que el planeta por lo que debes lanzar proyectiles 
 y destruir los meteoritos.
-Si algun meteorito impacta con la nave o el planeta la barra de salud disminue respectivamente.
+Si algun meteorito impacta con la nave o el planeta la barra de salud disminuye respectivamente.
 
-PIERDES si la barra de salud de tu nave o el planeta 
+PIERDES si la barra de salud de tu nave o el planeta queda vacio.
 GANAS al destruir 30 meteoritos.
