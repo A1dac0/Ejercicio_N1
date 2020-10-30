@@ -303,12 +303,6 @@ def ScaledPersonaje1(x, y, sx, sy, size,time):
 	glFlush()
 	return x, y
 
-
-
-
-
-
-
 def RotarDefender(x, y, angle, r, g, b, size):
 	#clearCanvas()
 	despintar(x,y,size)
