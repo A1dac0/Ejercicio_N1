@@ -7,6 +7,7 @@ Integrantes:
 - Yupanqui Carrillo Holger Alfredo
 
 Proceso de creacion: https://docs.google.com/presentation/d/1WEpJnUh0mL0TwO8ZcteqZ4A5gvXA1KNCd8k5NaCWS88/edit?usp=sharing
+link del juego: https://youtu.be/0X4syaDqg1M
 
 Juego inspirado en "Space Invaders".
 
